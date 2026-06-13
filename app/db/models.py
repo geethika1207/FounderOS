@@ -25,5 +25,13 @@ class blueprints(Base):
     end_points = Column(JSON, nullable = False, unique = False)
     risk_factors = Column(JSON, nullable = False, unique = False)
     roadmap = Column(JSON, nullable = False, unique = False)
+    followup_questions = relationship("Messages")
 
- 
+class Messages(Base):
+    __tablename__ = "conversations"
+
+    id = Column(INTEGER, primary_key = True)
+    analysis_id = Column(INTEGER, ForeignKey("analysis.id", ondelete = "CASCADE"), nullable = False)  
+    question = Column(String, unique=False, nullable=False)
+    answer = Column(String, unique=False, nullable=False)
+    created_at = Column(TIMESTAMP(timezone=True), nullable = False, server_default = text('now()'))

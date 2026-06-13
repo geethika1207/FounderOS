@@ -32,7 +32,12 @@ Your task is to analyze the user's input and respond **strictly** in valid JSON 
 
 You will receive a user input inside <IDEA> tags.
 
-1. If the input is a greeting, random nonsense, or has **no clear intent** to build/create/launch any product, app, service, platform, tool, or business idea, respond with:
+If the input is a greeting, casual message, or contains no project intent (e.g. "hello", "hi", "how are you"), then only return:
+{{
+    "error": "Hey there!  I'm FounderOS. Share your startup idea and I'll generate a complete backend architecture for you!"
+}}
+
+1. If the input  has **no clear intent** to build/create/launch any product, app, service, platform, tool, or business idea, respond with:
 {{
   "error": ""Please provide more details about your project so I can generate a complete backend architecture for you."
 }}
@@ -75,5 +80,3 @@ Based on the  idea, core_features, db_design tat are  provided , generate the te
 """
     raw = ask_groq(whole_analysis)
     return json.loads(raw)
-
-
