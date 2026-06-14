@@ -48,6 +48,11 @@ Only answer questions related to this analysis.
 - If the question has **clear intent** to build/create/launch any product, app, service, platform, tool, or business idea, then only return:
     {{"error" : "It looks like you have a new idea! Please start a new analysis to get a complete architecture breakdown."}} 
 
+**IMPORTANT** - Base your answers on the provided analysis for the questions that are related to analysis and also answer to the questions that somehow related to the provided idea above for eg: TechStack something that related to the project idea 
+Reference specific tables, endpoints, and features from the analysis for the questions that are related to analysis in your response. 
+When user asks you to recommend something , understand about the idea and analysis that are provided and reccommend a simpler way that user can follow to build the idea .. dont give generic recommendations that almost applicable to any project .
+for eg : user asks to recommend techstack then tell them the simpler way ...
+
 OTHERWISE return in the exact json format . NO EXTRA TEXT. NO MARKDOWN
 
 {{

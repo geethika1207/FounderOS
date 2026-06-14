@@ -74,7 +74,9 @@ Based on the  idea, core_features, db_design tat are  provided , generate the te
 {{
     "endpoints" : <based on the core features list endpoints with the respective HTTP methods for example POST/signup , GET/info list all the endpoints that the project idea requires and respective to  the endpoints also give what two tables and fields in that tables have to join if the endpoint needs to join two tables >
     "roadmap" : <based on the project complexity , design a roadmap day to day realestically to complete the project by the developer >
-    "risk_areas" : <list the risk areas in whre the developer has to be more careful while designing soo that the project turns out good for example while designing the pages or something>
+    "risk_areas": <Identify risk areas SPECIFIC to this exact idea only. Do NOT include generic risks like 'security', 'authentication', 'testing' that apply to every app. Only include risks unique to THIS idea's domain, 
+    features, and technical challenges. For example, for an AI platform: prompt injection, AI hallucination in outputs, LLM rate limits. 
+    For a marketplace: payment disputes, seller fraud, inventory sync.>
 }} 
 
 """

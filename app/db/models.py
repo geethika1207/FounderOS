@@ -25,7 +25,8 @@ class blueprints(Base):
     end_points = Column(JSON, nullable = False, unique = False)
     risk_factors = Column(JSON, nullable = False, unique = False)
     roadmap = Column(JSON, nullable = False, unique = False)
-    followup_questions = relationship("Messages")
+    created_at = Column(TIMESTAMP(timezone=True), nullable = False, server_default = text('now()'))
+    messages = relationship("Messages")
 
 class Messages(Base):
     __tablename__ = "conversations"
