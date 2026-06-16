@@ -58,27 +58,47 @@ idea :
     return json.loads(raw)
 
 
-def get_analysis(idea:str, core_features:list, db_design:dict):
+def get_analysis(idea: str, core_features: list, db_design: dict):
     whole_analysis = f"""
 You are FounderOS, an expert startup technical architect.
 
-idea : {idea}
-core_features : {core_features}
-db_design : {db_design}
+idea: {idea}
+core_features: {core_features}
+db_design: {db_design}
 
-Based on the  idea, core_features, db_design tat are  provided , generate the technical planning details.
+Based on the idea, core_features, and db_design provided, generate the technical planning details.
 
-**STRICT RULE** - Make sure the the endpoints naming must have to match with the tables and fields which are in db_design that i already provided to u .. Make sure the endpoints must have to be based on the db_design that i already provided.
- Return ONLY valid JSON. No extra text. No markdown.
+STRICT RULES:
+- Endpoint names and fields MUST match the tables and fields in db_design exactly.
+- Return ONLY valid JSON. No extra text. No markdown. No code blocks.
+- Every field below MUST follow the exact structure shown. No deviations.
 
 {{
-    "endpoints" : <based on the core features list endpoints with the respective HTTP methods for example POST/signup , GET/info list all the endpoints that the project idea requires and respective to  the endpoints also give what two tables and fields in that tables have to join if the endpoint needs to join two tables >
-    "roadmap" : <based on the project complexity , design a roadmap day to day realestically to complete the project by the developer >
-    "risk_areas": <Identify risk areas SPECIFIC to this exact idea only. Do NOT include generic risks like 'security', 'authentication', 'testing' that apply to every app. Only include risks unique to THIS idea's domain, 
-    features, and technical challenges. For example, for an AI platform: prompt injection, AI hallucination in outputs, LLM rate limits. 
-    For a marketplace: payment disputes, seller fraud, inventory sync.>
-}} 
+    "end_points": [
+        {{
+            "method": "POST",
+            "path": "/example",
+            "description": "What this endpoint does",
+            "tables_joined": ["table1", "table2"]
+        }}
+    ],
+    "roadmap": [
+        {{
+            "phase": "Phase 1",
+            "days": "Day 1-3",
+            "tasks": ["task 1", "task 2"]
+        }}
+    ],
+    "risk_areas": [
+        {{
+            "area": "Name of risk",
+            "description": "Why it is risky for THIS specific idea"
+        }}
+    ]
+}}
 
+Generate real values following this exact structure for the given idea.
+Only include risks unique to this idea's domain. Do NOT include generic risks like security or authentication.
 """
     raw = ask_groq(whole_analysis)
     return json.loads(raw)
