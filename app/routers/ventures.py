@@ -31,7 +31,7 @@ def get_analysis(venture:ventures.UserIdea, db:session=Depends(get_db), current_
                     core_features = final_analysis["core_features"],
                     target_users = final_analysis["target_users"],
                     db_design = final_analysis["db_design"],
-                    end_points = final_analysis["endpoints"],
+                    end_points = final_analysis["end_points"],
                     risk_factors = final_analysis["risk_areas"],
                     roadmap = final_analysis["roadmap"]
     )
