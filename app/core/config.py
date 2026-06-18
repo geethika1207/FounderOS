@@ -12,6 +12,8 @@ class Settings(BaseSettings):
     SECRET_KEY : str
     ALGORITHM : str
     API_KEY : str
+    UPSTASH_REDIS_REST_URL : str
+    UPSTASH_REDIS_REST_TOKEN : str
     class Config:
         env_file = str(ROOT_DIR / ".env")
 
