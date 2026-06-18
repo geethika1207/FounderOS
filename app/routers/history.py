@@ -6,20 +6,23 @@ from ..core.security import get_current_user
 from ..schemas.history import AnalysisResponse
 from ..schemas.history import HistoryResponse
 from typing import List
+from sqlalchemy import func
 
 router = APIRouter()
 
-@router.get("/history/{id}", response_model=List[AnalysisResponse])
-def get_analysis(id:int, db:session=Depends(get_db), current_user=Depends(get_current_user)):
-    analysis = db.query(models.blueprints).join(models.Messages, models.blueprints.id==models.Messages.analysis_id).filter(models.blueprints.user_id==current_user.id).all()
+@router.get("/history/{id}", response_model=AnalysisResponse)
+def get_analysis(id: int, db: session = Depends(get_db), current_user = Depends(get_current_user)):
+    analysis = db.query(models.blueprints)\
+        .outerjoin(models.Messages, models.blueprints.id == models.Messages.analysis_id)\
+        .filter(
+            models.blueprints.id == id,
+            models.blueprints.user_id == current_user.id
+        ).first()
 
-    if analysis is []:
+    if not analysis:
         raise HTTPException(status_code=status.HTTP_404_NOT_FOUND, detail="NOT FOUND")
     
     return analysis
-
-
-from sqlalchemy import func
 
 @router.get("/history", response_model=List[HistoryResponse])
 def get_history(limit: int = 3, db: session = Depends(get_db), current_user=Depends(get_current_user)):

@@ -10,6 +10,7 @@ class MessagesResponse(BaseModel):
         orm_mode = True
 
 class AnalysisResponse(BaseModel):
+    id : int
     developer_idea : str
     app_type : list
     core_features : list
@@ -25,6 +26,7 @@ class AnalysisResponse(BaseModel):
 
 
 class HistoryResponse(BaseModel):
+    id : int
     developer_idea: str
     app_type: list
     created_at: datetime

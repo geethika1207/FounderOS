@@ -38,4 +38,4 @@ def get_analysis(venture:ventures.UserIdea, db:session=Depends(get_db), current_
     db.add(new_analysis)
     db.commit()
     db.refresh(new_analysis)
-    return final_analysis
+    return{"final_analysis":final_analysis, "id" : new_analysis.id}
