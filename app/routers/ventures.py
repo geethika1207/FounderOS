@@ -28,24 +28,25 @@ def get_analysis(venture:ventures.UserIdea, db:session=Depends(get_db), current_
     if cached:
         final_analysis = json.loads(cached)
 
-    try:
-        prompt1 = ai_service.get_prompt1(venture.idea)
-        error = prompt1.get("error")   
-        if error:
-            raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)     
-        whole_analysis = ai_service.get_analysis(idea= venture.idea, core_features=prompt1["core_features"], db_design=prompt1["db_design"])
-        final_analysis = {**prompt1, **whole_analysis}
-        redis_client.set(
-                cache_key,
-                json.dumps(final_analysis),
-                ex=3600
-        )
+    else :
+        try:
+            prompt1 = ai_service.get_prompt1(venture.idea)
+            error = prompt1.get("error")   
+            if error:
+                raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=error)     
+            whole_analysis = ai_service.get_analysis(idea= venture.idea, core_features=prompt1["core_features"], db_design=prompt1["db_design"])
+            final_analysis = {**prompt1, **whole_analysis}
+            redis_client.set(
+                    cache_key,
+                    json.dumps(final_analysis),
+                    ex=3600
+            )
 
-    except HTTPException:
-        raise
+        except HTTPException:
+            raise
 
-    except Exception as e:
-        raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
+        except Exception as e:
+            raise HTTPException(status_code=status.HTTP_500_INTERNAL_SERVER_ERROR, detail=str(e))
 
     new_analysis = models.blueprints(
                     developer_idea = venture.idea,

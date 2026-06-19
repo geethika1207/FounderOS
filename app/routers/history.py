@@ -34,6 +34,7 @@ def get_history(limit: int = 3, db: session = Depends(get_db), current_user=Depe
     output = [] 
     for analysis, message_count in results:
         output.append({
+            "id": analysis.id,
             "developer_idea": analysis.developer_idea,
             "app_type": analysis.app_type,
             "created_at": analysis.created_at,
