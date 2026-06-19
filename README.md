@@ -208,7 +208,7 @@ Redis caching initially caused cache hits to skip the database save. Fixed by se
 
 ## Author
 
-**Geethika Tammineni**
+**Geethika Nagasri Tammineni**
 
 Aspiring Software Engineer | Backend Development | AI-Powered Applications
 
