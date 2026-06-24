@@ -14,6 +14,7 @@ class Settings(BaseSettings):
     API_KEY : str
     UPSTASH_REDIS_REST_URL : str
     UPSTASH_REDIS_REST_TOKEN : str
+    REDIS_URL : str
     class Config:
         env_file = str(ROOT_DIR / ".env")
 
