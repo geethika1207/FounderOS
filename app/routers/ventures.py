@@ -2,10 +2,10 @@ from fastapi import APIRouter, Depends
 from ..core.security import get_current_user 
 from ..schemas import ventures
 from ..tasks.test import generate_idea_analysis
-from rq import Queue
-from redis import Redis
-from rq.job import Job
-from ..core.config import settings
+#from rq import Queue
+#from redis import Redis
+#from rq.job import Job
+#from ..core.config import settings
 
 
 router = APIRouter()
