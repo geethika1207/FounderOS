@@ -13,8 +13,8 @@ redis_client = Redis(
 
 def generate_idea_analysis(idea: str, user_id: int):
     db = SessionLocal()
-    print("🔥 WORKER STARTED")
-    print("IDEA:", idea)
+    #print("🔥 WORKER STARTED")
+    #print("IDEA:", idea)
     print("USER_ID:", user_id)
 
     try:
