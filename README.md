@@ -10,9 +10,9 @@ The system also uses Redis-based caching and background job processing to optimi
 
 ## Live Demo
 
-- 🔗 **Backend:** https://founderos-3ps7.onrender.com
+- 🔗 **Backend:** https://founderos-26aa.onrender.com
 - 🔗 **Frontend:** https://founderos-app.lovable.app
-- 📄 **API Docs:** https://founderos-3ps7.onrender.com/docs
+- 📄 **API Docs:** https://founderos-26aa.onrender.com/docs
 
 ---
 
