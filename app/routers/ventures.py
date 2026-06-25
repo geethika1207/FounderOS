@@ -58,6 +58,14 @@ def get_analysis(
         current_user.id
     )
 
+    if result.get("error"):
+        return {
+            "status": "completed",
+            "result": None,
+            "db_id": None,
+            "error": result["error"]
+        }
+
     return {
     "status": "completed",
     "result": result.get("analysis"),
