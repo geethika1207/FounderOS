@@ -2,7 +2,9 @@
 
 FounderOS is a full-stack AI application that converts a single natural-language startup idea into a complete backend architecture — database schema, REST API design, a phased development roadmap, and domain-specific risk areas — in seconds.
 
-The goal is to compress hours of manual technical planning into an instant, structured blueprint, so founders and developers can move from idea to implementation without first spending a day designing their own backend from scratch.
+The goal is to compress hours of manual technical planning into an instant, structured blueprint, so founders and developers can move from idea to implementation without first spending a day designing their own backend from scratch. 
+
+The system also uses Redis-based caching and background job processing to optimize LLM response time, reduce redundant inference calls, and handle asynchronous generation workflows efficiently.
 
 ---
 
